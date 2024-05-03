@@ -20,7 +20,7 @@ echo "Tunnel Installed: $(opkg list-installed | grep -e luci-app-openclash -e lu
 echo "###############################################"
 
 # Set login root password
-(echo "friwrt"; sleep 1; echo "friwrt") | passwd > /dev/null
+(echo "sijitekowolu"; sleep 1; echo "sijitekowolu") | passwd > /dev/null
 
 # Set hostname and Timezone to Asia/Jakarta
 echo "Setup NTP Server and Time Zone to Asia/Jakarta"
@@ -46,8 +46,11 @@ uci set network.wan.iptype='ipv4'
 uci set network.tethering=interface
 uci set network.tethering.proto='dhcp'
 uci set network.tethering.device='usb0'
+uci set network.eth=interface
+uci set network.eth.proto='dhcp'
+uci set network.eth.device='eth1'
 uci commit network
-uci set firewall.@zone[1].network='wan tethering'
+uci set firewall.@zone[1].network='wan tethering eth'
 uci commit firewall
 
 # configure ipv6
@@ -103,34 +106,6 @@ else
   echo "src/gz custom_arch https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/$(grep "OPENWRT_ARCH" /etc/os-release | awk -F '"' '{print $2}')" >> /etc/opkg/customfeeds.conf
 fi
 
-# setting firewall for samba4
-echo "Setup SAMBA4 firewall"
-uci -q delete firewall.samba_nsds_nt
-uci set firewall.samba_nsds_nt="rule"
-uci set firewall.samba_nsds_nt.name="NoTrack-Samba/NS/DS"
-uci set firewall.samba_nsds_nt.src="lan"
-uci set firewall.samba_nsds_nt.dest="lan"
-uci set firewall.samba_nsds_nt.dest_port="137-138"
-uci set firewall.samba_nsds_nt.proto="udp"
-uci set firewall.samba_nsds_nt.target="NOTRACK"
-uci -q delete firewall.samba_ss_nt
-uci set firewall.samba_ss_nt="rule"
-uci set firewall.samba_ss_nt.name="NoTrack-Samba/SS"
-uci set firewall.samba_ss_nt.src="lan"
-uci set firewall.samba_ss_nt.dest="lan"
-uci set firewall.samba_ss_nt.dest_port="139"
-uci set firewall.samba_ss_nt.proto="tcp"
-uci set firewall.samba_ss_nt.target="NOTRACK"
-uci -q delete firewall.samba_smb_nt
-uci set firewall.samba_smb_nt="rule"
-uci set firewall.samba_smb_nt.name="NoTrack-Samba/SMB"
-uci set firewall.samba_smb_nt.src="lan"
-uci set firewall.samba_smb_nt.dest="lan"
-uci set firewall.samba_smb_nt.dest_port="445"
-uci set firewall.samba_smb_nt.proto="tcp"
-uci set firewall.samba_smb_nt.target="NOTRACK"
-uci commit firewall
-
 # set argon as default theme
 echo "Setup Default Theme"
 uci set luci.main.mediaurlbase='/luci-static/argon' && uci commit
@@ -158,10 +133,10 @@ uci commit nlbwmon
 bash /etc/init.d/nlbwmon restart
 
 # setup auto vnstat database backup
-sed -i 's/;DatabaseDir "\/var\/lib\/vnstat"/DatabaseDir "\/etc\/vnstat"/' /etc/vnstat.conf
+sed -i 's/;DatabaseDir "\/var\/lib\/vnstat"/DatabaseDr "\/etc\/vnstat"/' /etc/vnstat.conf
 mkdir -p /etc/vnstat
-chmod +x /etc/init.d/vnstat_backup
-bash /etc/init.d/vnstat_backup enable
+# chmod +x /etc/init.d/vnstat_backup
+# bash /etc/init.d/vnstat_backup enable
 
 # adjusting app catagory
 sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/aria2.lua 2>/dev/null || sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-aria2.json
@@ -181,6 +156,8 @@ chmod +x /usr/bin/clock
 chmod +x /usr/bin/mount_hdd
 chmod +x /usr/bin/openclash.sh
 chmod +x /usr/bin/cek_sms.sh
+chmod +x /usr/bin/hg680p.sh
+chmod +x /usr/bin/inet-hg680p.sh
 
 # configurating openclash
 if opkg list-installed | grep luci-app-openclash > /dev/null; then
@@ -219,7 +196,7 @@ if grep -q "Raspberry Pi 4\|Raspberry Pi 3" /proc/cpuinfo; then
 fi
 
 # enable adguardhome
-chmod +x /usr/bin/adguardhome
+# chmod +x /usr/bin/adguardhome
 #bash /usr/bin/adguardhome enable_agh
 
 echo "All first boot setup complete!"
