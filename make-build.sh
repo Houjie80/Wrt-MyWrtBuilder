@@ -8,7 +8,7 @@ PROFILE=""
 PACKAGES=""
 
 # Modem and UsbLAN Driver
-PACKAGES+=" kmod-usb-net-rtl8150 kmod-usb-net-rtl8152 kmod-usb-net-asix kmod-usb-net-asix-ax88179"
+PACKAGES+=" kmod-usb-net-rtl8150 kmod-usb-net-rtl8152 -kmod-usb-net-asix -kmod-usb-net-asix-ax88179"
 PACKAGES+=" kmod-mii kmod-usb-net kmod-usb-wdm kmod-usb-net-qmi-wwan uqmi luci-proto-qmi \
 kmod-usb-net-cdc-ether kmod-usb-serial-option kmod-usb-serial kmod-usb-serial-wwan qmi-utils \
 kmod-usb-serial-qualcomm kmod-usb-acm kmod-usb-net-cdc-ncm kmod-usb-net-cdc-mbim umbim \
@@ -42,17 +42,17 @@ elif [ "$2" == "openclash-passwall-neko" ]; then
 fi
 
 # Adguardhome
-PACKAGES+=" luci-app-adguardhome ca-certificates ca-bundle tar unzip bind-tools"
+PACKAGES+=" luci-app-rakitiw luci-app-tailscale luci-app-tinyfm luci-app-ipinfo luci-theme-initials ca-certificates ca-bundle tar unzip bind-tools"
 
 # NAS and Hard disk tools
-PACKAGES+=" luci-app-diskman luci-app-hd-idle luci-app-disks-info smartmontools kmod-usb-storage kmod-usb-storage-uas ntfs-3g"
-PACKAGES+=" samba4-server luci-app-samba4 aria2 ariang luci-app-aria2 luci-app-tinyfm"
+PACKAGES+=" luci-app-diskman smartmontools kmod-usb-storage kmod-usb-storage-uas ntfs-3g"
+# PACKAGES+=" samba4-server luci-app-samba4 aria2 ariang luci-app-aria2 luci-app-tinyfm"
 
 # Docker
-PACKAGES+=" docker docker-compose dockerd luci-app-dockerman"
+# PACKAGES+=" docker docker-compose dockerd luci-app-dockerman"
 
 # Bandwidth And Network Monitoring
-PACKAGES+=" internet-detector luci-app-internet-detector internet-detector-mod-modem-restart nlbwmon luci-app-nlbwmon vnstat2 vnstati2 luci-app-vnstat2 luci-app-netmonitor"
+PACKAGES+=" internet-detector luci-app-internet-detector internet-detector-mod-modem-restart nlbwmon luci-app-nlbwmon vnstat2 vnstati2 luci-app-netmonitor"
 
 # Speedtest
 PACKAGES+=" librespeed-go python3-speedtest-cli iperf3 luci-app-netspeedtest"
@@ -75,7 +75,7 @@ PACKAGES+=" libc php8 php8-fastcgi php8-fpm php8-mod-session php8-mod-ctype php8
 # Misc and some custom .ipk files
 misc=""
 if [ "${RELEASE_BRANCH%:*}" == "openwrt" ]; then
-    misc+=" luci-app-temp-status luci-app-cpu-status-mini"
+    misc+=" "
 elif [ "${RELEASE_BRANCH%:*}" == "immortalwrt" ]; then
     misc+=" "
 fi
@@ -97,7 +97,7 @@ if [ "$TYPE" == "AMLOGIC" ]; then
     EXCLUDED+=" -procd-ujail"
 fi
 
-PACKAGES+=" $misc zram-swap adb parted losetup resize2fs luci luci-ssl block-mount luci-app-poweroff luci-app-log-viewer luci-app-ramfree htop bash curl wget wget-ssl tar unzip unrar gzip jq luci-app-ttyd nano httping screen openssh-sftp-server"
+PACKAGES+=" $misc zram-swap adb parted losetup resize2fs luci luci-ssl block-mount luci-app-poweroff luci-app-ramfree htop bash curl wget wget-ssl tar unzip unrar gzip jq luci-app-ttyd nano httping screen openssh-sftp-server"
 
 # Exclude package (must use - before packages name)
 EXCLUDED=""
@@ -114,7 +114,7 @@ fi
 FILES="files"
 
 # Disable service
-DISABLED_SERVICES="AdGuardHome"
+# DISABLED_SERVICES="AdGuardHome"
 
 # Start build firmware
-make image PROFILE="$1" PACKAGES="$PACKAGES $EXCLUDED" FILES="$FILES" DISABLED_SERVICES="$DISABLED_SERVICES"
+make image PROFILE="$1" PACKAGES="$PACKAGES $EXCLUDED" FILES="$FILES"
