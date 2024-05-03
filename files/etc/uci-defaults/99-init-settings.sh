@@ -108,7 +108,7 @@ fi
 
 # set argon as default theme
 echo "Setup Default Theme"
-uci set luci.main.mediaurlbase='/luci-static/argon' && uci commit
+uci set luci.main.mediaurlbase='/luci-static/initials' && uci commit
 
 echo "Setup misc settings"
 # remove login password required when accessing terminal
