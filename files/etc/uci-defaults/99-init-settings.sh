@@ -24,7 +24,7 @@ echo "###############################################"
 
 # Set hostname and Timezone to Asia/Jakarta
 echo "Setup NTP Server and Time Zone to Asia/Jakarta"
-uci set system.@system[0].hostname='friWrt'
+uci set system.@system[0].hostname='HOUJIE-Wrt'
 uci set system.@system[0].timezone='WIB-7'
 uci set system.@system[0].zonename='Asia/Jakarta'
 uci -q delete system.ntp.server
@@ -36,7 +36,7 @@ uci commit system
 # configure wan interface
 chmod +x /usr/lib/ModemManager/connection.d/10-report-down
 echo "Setup WAN and LAN Interface"
-uci set network.lan.ipaddr="192.168.2.1"
+uci set network.lan.ipaddr="192.168.1.1"
 uci set network.wan=interface 
 uci set network.wan.proto='modemmanager'
 uci set network.wan.device='/sys/devices/platform/scb/fd500000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/usb2/2-1'
