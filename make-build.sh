@@ -8,7 +8,7 @@ PROFILE=""
 PACKAGES=""
 
 # Modem and UsbLAN Driver
-PACKAGES+=" kmod-usb-net-rtl8150 kmod-usb-net-rtl8152 -kmod-usb-net-asix -kmod-usb-net-asix-ax88179 kmod-usb-xhci-hcd kmod-usb3"
+PACKAGES+=" kmod-usb-net-rtl8150 kmod-usb-net-rtl8152 -kmod-usb-net-asix -kmod-usb-net-asix-ax88179 kmod-usb-xhci-hcd kmod-usb3 openssh-sftp-server"
 PACKAGES+=" kmod-mii kmod-usb-net kmod-usb-wdm kmod-usb-net-qmi-wwan uqmi luci-proto-qmi \
 kmod-usb-net-cdc-ether kmod-usb-serial-option kmod-usb-serial kmod-usb-serial-wwan qmi-utils \
 kmod-usb-serial-qualcomm kmod-usb-acm kmod-usb-net-cdc-ncm kmod-usb-net-cdc-mbim umbim \
@@ -42,7 +42,7 @@ elif [ "$2" == "openclash-passwall-neko" ]; then
 fi
 
 # Adguardhome
-PACKAGES+=" luci-app-rakitiw luci-app-tailscale luci-app-droidnet luci-app-tinyfm luci-app-ipinfo luci-theme-initials ca-certificates ca-bundle tar unzip bind-tools"
+PACKAGES+=" luci-app-rakitiw luci-app-tailscale luci-app-droidnet luci-app-tinyfm luci-app-ipinfo luci-app-ocgen luci-theme-initials ca-certificates ca-bundle tar unzip bind-tools"
 
 # NAS and Hard disk tools
 PACKAGES+=" luci-app-diskman smartmontools kmod-usb-storage kmod-usb-storage-uas ntfs-3g"
