@@ -10,7 +10,7 @@
 #
 #=====================================================================================
 
-name: fw amiloc
+name: fw amilocy
 
 on:
   workflow_dispatch:
@@ -18,11 +18,11 @@ on:
       release_branch:
         description: "Select the release branch:"
         required: true
-        default: "openwrt:23.05.3"
+        default: "openwrt:23.05.4"
         type: choice
         options:
           - openwrt:21.02.7
-          - openwrt:23.05.2
+          - openwrt:23.05.4
           - openwrt:23.05.3
           - immortalwrt:21.02.7
           - immortalwrt:23.05.1
