@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # openclash
-openclash_api="https://api.github.com/repos/vernesong/OpenClash/releases"
+openclash_api="https://api.github.com/repos/Houjie80/OpenClash/releases"
 openclash_file="luci-app-openclash"
 openclash_file_down="$(curl -s ${openclash_api} | grep "browser_download_url" | grep -oE "https.*${openclash_file}.*.ipk" | head -n 1)"
 
