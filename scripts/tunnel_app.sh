@@ -21,11 +21,11 @@ passwall2_api="https://api.github.com/repos/rtaserver/openwrt-passwall2/releases
 passwall2_file="luci-23.05_luci-app-passwall2"
 passwall2_file_down="$(curl -s ${passwall2_api} | grep "browser_download_url" | grep -oE "https.*${passwall2_file}.*.ipk" | head -n 1)"
 
-passwall_ipk_packages=("https://github.com/lrdrdn/my-opkg-repo/blob/main/aarch64_generic/shadowsocksr-libev-ssr-local_2.5.6-9_aarch64_generic.ipk"
-                       "https://github.com/lrdrdn/my-opkg-repo/blob/main/aarch64_generic/pdnsd-alt_1.2.9b-par-3_aarch64_generic.ipk"
-                       "https://github.com/lrdrdn/my-opkg-repo/blob/main/aarch64_generic/v2ray-plugin_5.7.0-1_aarch64_generic.ipk"
-                       "https://github.com/lrdrdn/my-opkg-repo/raw/main/$ARCH_3/xray-plugin_1.8.4-1_$ARCH_3.ipk"
-                       "https://github.com/lrdrdn/my-opkg-repo/raw/main/$ARCH_3/trojan-plus_10.0.3-2_$ARCH_3.ipk")
+passwall_ipk_packages=("https://github.com/lrdrdn/my-opkg-repo/blob/main/aarch64_generic/shadowsocksr-libev-ssr-local_2.5.6-9_aarch64_generic.ipk" y
+                       "https://github.com/lrdrdn/my-opkg-repo/blob/main/aarch64_generic/pdnsd-alt_1.2.9b-par-3_aarch64_generic.ipk" y
+                       "https://github.com/lrdrdn/my-opkg-repo/blob/main/aarch64_generic/v2ray-plugin_5.7.0-1_aarch64_generic.ipk" y
+                       "https://github.com/lrdrdn/my-opkg-repo/raw/main/$ARCH_3/xray-plugin_1.8.4-1_$ARCH_3.ipk" y
+                       "https://github.com/lrdrdn/my-opkg-repo/raw/main/$ARCH_3/trojan-plus_10.0.3-2_$ARCH_3.ipk" y)
                        
 
 if [ "$1" == "openclash" ]; then
