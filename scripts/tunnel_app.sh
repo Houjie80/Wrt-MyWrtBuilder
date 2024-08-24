@@ -22,12 +22,12 @@ passwall2_file="luci-23.05_luci-app-passwall2"
 passwall2_file_down="$(curl -s ${passwall2_api} | grep "browser_download_url" | grep -oE "https.*${passwall2_file}.*.ipk" | head -n 1)"
 
 passwall_ipk_packages=("https://github.com/lrdrdn/my-opkg-repo/blob/main/aarch64_generic/shadowsocksr-libev-ssr-local_2.5.6-9_aarch64_generic.ipk"
-                       "https://github.com/lrdrdn/my-opkg-repo/raw/main/$ARCH_3/pdnsd-alt_1.1.0-1_$ARCH_3.ipk"
-                       "https://github.com/lrdrdn/my-opkg-repo/raw/main/$ARCH_3/v2ray-plugin_2023.06.01-1_$ARCH_3.ipk"
+                       "https://github.com/lrdrdn/my-opkg-repo/blob/main/aarch64_generic/pdnsd-alt_1.2.9b-par-3_aarch64_generic.ipk"
+                       "https://github.com/lrdrdn/my-opkg-repo/blob/main/aarch64_generic/v2ray-plugin_5.7.0-1_aarch64_generic.ipk"
                        "https://github.com/lrdrdn/my-opkg-repo/raw/main/$ARCH_3/xray-plugin_1.8.4-1_$ARCH_3.ipk"
                        "https://github.com/lrdrdn/my-opkg-repo/raw/main/$ARCH_3/trojan-plus_10.0.3-2_$ARCH_3.ipk"
-                       "https://github.com/lrdrdn/my-opkg-repo/raw/main/$ARCH_3/tcping_1.1.3-3_$ARCH_3.ipk"
-                       "https://github.com/lrdrdn/my-opkg-repo/raw/main/$ARCH_3/simple-obfs_1.2.9b-par-3_$ARCH_3.ipk")
+                       "https://github.com/lrdrdn/my-opkg-repo/blob/main/aarch64_generic/tcping_0.3-1_aarch64_generic.ipk"
+                       "https://github.com/lrdrdn/my-opkg-repo/blob/main/aarch64_generic/simple-obfs_0.0.5-1_aarch64_generic.ipk")
                        
 
 if [ "$1" == "openclash" ]; then
