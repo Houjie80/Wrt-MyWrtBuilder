@@ -26,8 +26,7 @@ passwall_ipk_packages=("https://github.com/lrdrdn/my-opkg-repo/blob/main/aarch64
                        "https://github.com/lrdrdn/my-opkg-repo/blob/main/aarch64_generic/v2ray-plugin_5.7.0-1_aarch64_generic.ipk"
                        "https://github.com/lrdrdn/my-opkg-repo/raw/main/$ARCH_3/xray-plugin_1.8.4-1_$ARCH_3.ipk"
                        "https://github.com/lrdrdn/my-opkg-repo/raw/main/$ARCH_3/trojan-plus_10.0.3-2_$ARCH_3.ipk"
-                       "https://github.com/lrdrdn/my-opkg-repo/blob/main/aarch64_generic/tcping_0.3-1_aarch64_generic.ipk"
-                      # "https://github.com/lrdrdn/my-opkg-repo/blob/main/aarch64_generic/simple-obfs_0.0.5-1_aarch64_generic.ipk")
+                       "https://github.com/lrdrdn/my-opkg-repo/blob/main/aarch64_generic/tcping_0.3-1_aarch64_generic.ipk")
                        
 
 if [ "$1" == "openclash" ]; then
