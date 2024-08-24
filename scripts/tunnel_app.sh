@@ -11,14 +11,14 @@ neko_file="luci-app-neko"
 neko_file_down="$(curl -s https://api.github.com/repos/nosignals/neko/releases/latest | jq -r '.assets[] | select(.name | endswith("_23_05.ipk")) | .browser_download_url')"
 
 # passwall
-passwall_api="https://api.github.com/repos/xiaorouji/openwrt-passwall2/releases"
-passwall_file="passwall2_packages_ipk_$ARCH_3.zip"
+passwall_api="https://api.github.com/repos/xiaorouji/openwrt-passwall/releases"
+passwall_file="passwall_packages_ipk_$ARCH_3.zip"
 passwall_file_down="$(curl -s ${passwall_api} | grep "browser_download_url" | grep -oE "https.*${passwall_file}" | head -n 1)"
-passwall_ipk="https://github.com/xiaorouji/openwrt-passwall/releases/download/4.71-2/luci-app-passwall_4.71-2_all.ipk"
+passwall_ipk="https://github.com/xiaorouji/openwrt-passwall/releases/download/4.78-1/luci-app-passwall_4.78-1_all.ipk"
 
 # passwall2
 passwall2_api="https://api.github.com/repos/rtaserver/openwrt-passwall2/releases"
-passwall2_file="luci-23.05_luci-app-passwall2"
+passwall2_file="luci-23.05_luci-app-passwall"
 passwall2_file_down="$(curl -s ${passwall2_api} | grep "browser_download_url" | grep -oE "https.*${passwall2_file}.*.ipk" | head -n 1)"
 
 passwall_ipk_packages=("https://github.com/lrdrdn/my-opkg-repo/raw/main/$ARCH_3/dns2socks_2.1-2_$ARCH_3.ipk"
